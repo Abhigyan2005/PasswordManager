@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "cli/index.js",
   "scripts": {
-    "start": "nodemon ./cli/index.js",
-    "run": "nodemon ./server/index.js"
+    "dev": "nodemon ./cli/index.js"
   },
   "keywords": [],
   "type": "module",
@@ -13,10 +12,13 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "chalk": "^5.6.2",
+    "crypto": "^1.0.1", 
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.1.2",
-    "nodemon": "^3.1.11"
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.11",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.10"
   }
 }
