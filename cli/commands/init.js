@@ -25,6 +25,7 @@ export default async function init(rl) {
     .toString("hex");
 
   const vault = { salt, hash, entries: [] };
+  
   fs.writeFileSync(VAULT_PATH, JSON.stringify(vault, null, 2));
   console.log("✅ Vault initialized");
 }
