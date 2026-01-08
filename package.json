@@ -3,22 +3,17 @@
   "version": "1.0.0",
   "main": "cli/index.js",
   "scripts": {
-    "build": "pkg ."
+    "dev": "nodemon ./cli/index.js"
   },
   "keywords": [],
   "type": "module",
-  "bin": {
-    "pm": "./cli/index.js"
-  },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "chalk": "^5.6.2",
+    "nodemon": "^3.1.11",
     "open": "^11.0.0"
-  },
-  "devDependencies": {
-    "pkg": "^5.8.1",
-    "nodemon": "^3.1.11"
+
   }
 }
