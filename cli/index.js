@@ -43,6 +43,8 @@ ${chalk.bold.cyan("Commands:")}
   ${chalk.yellow("add")}     add a password
   ${chalk.blue("list")}    list services
   ${chalk.magenta("get")}     get a password
+  ${chalk.bgBlue("delete")}  deletes a specific entry
+  ${chalk.bgRedBright("drop")} Deletes the whole Vault
   ${chalk.red("exit")}    quit
   ${chalk.whiteBright("clear")}   to clear the terminal window.
 
