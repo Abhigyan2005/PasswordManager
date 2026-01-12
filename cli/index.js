@@ -11,22 +11,23 @@ import list from "./commands/list.js";
 const rl = readline.createInterface({ input, output });
 
 console.log(
-  chalk.bgRed(`
-██████╗  █████╗ ███████╗███████╗     ██████╗ ██╗   ██╗ █████╗ ██████╗ ██████╗ 
-██╔══██╗██╔══██╗██╔════╝██╔════╝    ██╔════╝ ██║   ██║██╔══██╗██╔══██╗██╔══██╗
-██████╔╝███████║███████╗███████╗    ██║  ███╗██║   ██║███████║██████╔╝██║  ██║
-██╔═══╝ ██╔══██║╚════██║╚════██║    ██║   ██║██║   ██║██╔══██║██╔══██╗██║  ██║
-██║     ██║  ██║███████║███████║    ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝
-╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝     ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ 
-
+  chalk.yellow(`
+//                                                                                            
+//     ▄▄▄▄▄▄▄    ▄▄▄▄▄▄▄   ▄▄▄    ▄▄▄   ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄   ▄▄▄    ▄▄▄    ▄▄▄▄▄▄▄   ▄▄▄      
+//    █████▀▀▀   ███▀▀▀▀▀   ████▄  ███   ▀▀▀███▀▀▀    ███    ████▄  ███   ███▀▀▀▀▀   ███      
+//     ▀████▄    ███▄▄      ███▀██▄███      ███       ███    ███▀██▄███   ███▄▄      ███      
+//       ▀████   ███        ███  ▀████      ███       ███    ███  ▀████   ███        ███      
+//    ███████▀   ▀███████   ███    ███      ███      ▄███▄   ███    ███   ▀███████   ████████ 
+//                                                                                            
+//                                                                                            
 `)
 );
 
-console.log("type help to get a list of commands\n");
+console.log(`${chalk.red(`type help to get a list of commands\n`)}`);
 
 async function main() {
   while (true) {
-    const cmd = (await rl.question(">> ")).trim();
+    const cmd = (await rl.question(">>>")).trim();
     const parts = cmd.split(" ");
     const command = parts[0];
 
@@ -36,17 +37,19 @@ async function main() {
 
     if (command === "help") {
       console.log(`
-Commands:
-  init    initialize vault
-  add     add a password
-  list    list entries
-  get     get a password
-  exit    quit
-  clear   to clear the terminal window.
+${chalk.bold.cyan("Commands:")}
 
-  Do you want to contribute or suggest features?
-  type github
-      `);
+  ${chalk.green("init")}    initialize vault
+  ${chalk.yellow("add")}     add a password
+  ${chalk.blue("list")}    list services
+  ${chalk.magenta("get")}     get a password
+  ${chalk.red("exit")}    quit
+  ${chalk.whiteBright("clear")}   to clear the terminal window.
+
+${chalk.bold.yellow("Do you want to contribute or suggest features?")}
+  type ${chalk.bold.green("github")} or ${chalk.bold.green("repo")}
+  
+  `);
       continue;
     }
 
@@ -65,7 +68,6 @@ Commands:
       continue;
     }
 
-
     if (command == "clear") {
       render();
       continue;
@@ -81,8 +83,8 @@ Commands:
       await list(parts, rl);
       continue;
     }
-    
-    console.log("unknown command");
+
+    console.log(`${chalk.red(`Unknown Command\n`)}`);
   }
 
   rl.close();

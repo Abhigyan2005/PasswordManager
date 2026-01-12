@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import chalk from "chalk";
 import { questionMask } from "../utils/mask.js";
 
 export default async function get(parts, rl) {
@@ -12,7 +13,7 @@ export default async function get(parts, rl) {
   }
 
   if (parts.length < 2) {
-    console.log(" Usage: get <service>");
+     console.log(`   ${chalk.red(`Usage:`)} get <service>\n`);
     return;
   }
 
@@ -41,13 +42,9 @@ export default async function get(parts, rl) {
   }
 
   for (const e of result) {
-    console.log(
-      "--------------------------------------------------------------"
-    );
-    console.log(`Username: ${e.username}`);
-    console.log(`Password: ${e.password}`);
-    console.log(
-      "--------------------------------------------------------------"
-    );
+    console.log(chalk.magenta("──────────────────────────────"));
+    console.log(`${chalk.bold.blue("Username:")} ${chalk.green(e.username)}`);
+    console.log(`${chalk.bold.blue("Password:")} ${chalk.red(e.password)}`);
+    console.log(chalk.magenta("──────────────────────────────\n"));
   }
 }

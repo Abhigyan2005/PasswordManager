@@ -13,9 +13,10 @@ export default async function init(rl) {
 
   const password = await questionMask(rl, "Set master password: ");
   const confirm = await questionMask(rl, "Confirm master password: ");
+  console.log("\n");
 
   if (password !== confirm) {
-    console.log("❌ Passwords do not match");
+    console.log("❌ Passwords do not match\n");
     return;
   }
 

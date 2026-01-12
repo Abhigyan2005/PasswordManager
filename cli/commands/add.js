@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
+import chalk from "chalk";
 import { questionMask } from "../utils/mask.js";
 
 export default async function add(parts, rl) {
@@ -12,7 +13,7 @@ export default async function add(parts, rl) {
   }
 
   if (parts.length < 3) {
-    console.log(" Usage: add <service> <username>");
+    console.log(`   ${chalk.red(`Usage:`)} add <service> <username>\n`);
     return;
   }
 
@@ -26,14 +27,26 @@ export default async function add(parts, rl) {
 
   const vault = JSON.parse(fs.readFileSync(VAULT_PATH, "utf-8"));
 
-  const a = await questionMask(rl, "Enter Master Password: ");
   const salt = vault.salt;
-  const hash = crypto.pbkdf2Sync(a, salt, 100000, 32, "sha256").toString("hex");
 
-  if (vault.hash != hash) {
-    console.log("password does not match");
-    return;
+  for (let i = 3; i > 0; i--) {
+    const a = await questionMask(rl, "Enter Master Password: ");
+    const hash = crypto
+      .pbkdf2Sync(a, salt, 100000, 32, "sha256")
+      .toString("hex");
+
+    if (vault.hash != hash) {
+      let attempt_left = i - 1;
+      console.log(chalk.red.bold(`❌  Wrong Password!  (${attempt_left} tries left)`));
+      if (attempt_left == 0) {
+        return;
+      }
+      continue;
+    } else {
+      break;
+    }
   }
+
   vault.entries.push({
     name: service,
     username,
