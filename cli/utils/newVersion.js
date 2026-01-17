@@ -1,7 +1,11 @@
 import { readFileSync } from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
-const pkgPath = join(process.cwd(), "package.json"); // adjust if needed
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const pkgPath = join(__dirname, "../../package.json");
+
 const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
 
 import { exec } from "child_process";
@@ -21,7 +25,6 @@ async function checkLatestVersion() {
       );
     }
   } catch (err) {
-    // fail silently if offline
   }
 }
 

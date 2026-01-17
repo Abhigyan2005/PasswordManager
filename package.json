@@ -1,5 +1,5 @@
 {
-  "name": "sentinel",
+  "name": "s3ntin3l",
   "version": "1.0.0",
   "main": "cli/index.js",
   "scripts": {
