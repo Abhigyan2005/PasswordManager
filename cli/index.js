@@ -18,18 +18,15 @@ await checkLatestVersion();
 
 const rl = readline.createInterface({ input, output });
 
-console.log(
-  chalk.yellow(`
-//                                                                                            
-//     ▄▄▄▄▄▄▄    ▄▄▄▄▄▄▄   ▄▄▄    ▄▄▄   ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄   ▄▄▄    ▄▄▄    ▄▄▄▄▄▄▄   ▄▄▄      
-//    █████▀▀▀   ███▀▀▀▀▀   ████▄  ███   ▀▀▀███▀▀▀    ███    ████▄  ███   ███▀▀▀▀▀   ███      
-//     ▀████▄    ███▄▄      ███▀██▄███      ███       ███    ███▀██▄███   ███▄▄      ███      
-//       ▀████   ███        ███  ▀████      ███       ███    ███  ▀████   ███        ███      
-//    ███████▀   ▀███████   ███    ███      ███      ▄███▄   ███    ███   ▀███████   ████████ 
-//                                                                                            
-//                                                                                            
-`)
-);
+console.log(`
+ _____ _____ _   _ _____ _____ _   _  _____ _     
+/  ___|  ___| \\ | |_   _|_   _| \\ | ||  ___| |    
+\\ \`--.| |__ |  \\| | | |   | | |  \\| || |__ | |    
+ \`--. \\  __|| . \` | | |   | | | . \` ||  __|| |    
+/\\__/ / |___| |\\  | | |  _| |_| |\\  || |___| |____
+\\____/\\____/\\_| \\_/ \\_/  \\___/\\_| \\_/\\____/\\_____/
+`);
+
 
 console.log(`${chalk.red(`type help to get a list of commands\n`)}`);
 
@@ -55,6 +52,7 @@ ${chalk.bold.cyan("Commands:")}
   ${chalk.bgBlue("delete")}  deletes a specific entry
   ${chalk.bgRedBright("drop")} Deletes the whole Vault
   ${chalk.red("exit")}    quit
+
   ${chalk.whiteBright("clear")}   to clear the terminal window.
 
 ${chalk.bold.yellow("Do you want to contribute or suggest features?")}

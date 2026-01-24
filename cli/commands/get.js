@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import chalk from "chalk";
+import clipboard from 'clipboardy';
 import { questionMask } from "../utils/mask.js";
 import { render } from "../utils/render.js";
 import decryptPassword from "../utils/decryptPassword.js";
@@ -63,12 +64,17 @@ export default async function get(parts, rl) {
 
   render();
 
-  console.log(chalk.bold.cyan(`\n🔐 Your saved ${service} accounts\n`));
-
+  console.log(chalk.bold.cyan(`\n🔐 Your Saved ${service} accounts\n`));
+  let i = 1;
   for (const e of result) {
-    console.log(chalk.magenta("──────────────────────────────"));
-    console.log(`${chalk.bold.blue("Username:")} ${chalk.green(e.username)}`);
-    console.log(`${chalk.bold.blue("Password:")} ${chalk.red(e.password)}`);
-    console.log(chalk.magenta("──────────────────────────────\n"));
+    console.log(`${i++}) ${chalk.green(e.username)}`);
   }
+
+  let b = await rl.question("which account's password do you want ? respond with the index "); // always returns a string
+
+  let index = Number(b) - 1;
+  // console.log(result[index].password);
+  render()
+  await clipboard.write(result[index].password);
+  console.log("password copied to your clipboard! ");
 }
