@@ -2,6 +2,11 @@
   "name": "s3ntin3l",
   "version": "1.1.0",
   "main": "cli/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abhigyan2005/Sentinel"
+  },
+  "homepage": "https://github.com/Abhigyan2005/Sentinel/blob/main/README.md",
   "scripts": {
     "dev": "nodemon ./cli/index.js"
   },
@@ -16,7 +21,9 @@
   "dependencies": {
     "chalk": "^5.6.2",
     "clipboardy": "^5.0.2",
-    "nodemon": "^3.1.11",
     "open": "^11.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
