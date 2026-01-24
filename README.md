@@ -25,7 +25,7 @@ sentinel
 
 
 ## Preview
-![alt text](image.png)
+![alt text](image-1.png)
 
 
 Built as a learning project improving it step by step.
